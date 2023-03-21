@@ -1,0 +1,88 @@
+<div
+  class="card card1 w-100"
+  style="border: none"
+  [class]="highlight ? 'darkmode' : ''"
+>
+  <div class="card-body">
+    <ng-container *ngIf="arrayOfTodos | async as array">
+      <p
+        class="lead text-center text-danger"
+        style="letter-spacing: 1px"
+        *ngIf="!array.length"
+      >
+        No todos in the list
+      </p>
+      <ul class="list-group list-group-flush">
+        <app-todo
+          *ngFor="let todo of array; let i = index"
+          [todo]="todo"
+          [id]="i"
+        ></app-todo>
+      </ul>
+    </ng-container>
+  </div>
+  <div
+    class="card-footer my-footer d-flex justify-content-between"
+    [class]="highlight ? 'bg-dark' : 'bg-light'"
+  >
+    <p class="text-md text-muted">{{ todosleft | async }} items left</p>
+    <div class="btns d-none d-sm-block">
+      <button
+        class="btn"
+        [class]="styledbtns == 'All' ? 'text-primary' : ''"
+        (click)="changestate('All')"
+      >
+        All
+      </button>
+      <button
+        class="btn"
+        [class]="styledbtns == 'Active' ? 'text-primary' : ''"
+        (click)="changestate('Active')"
+      >
+        Active
+      </button>
+      <button
+        class="btn"
+        [class]="styledbtns == 'Completed' ? 'text-primary' : ''"
+        (click)="changestate('Completed')"
+      >
+        Completed
+      </button>
+    </div>
+    <button class="btn" (click)="deleteTodos()">Clear</button>
+  </div>
+</div>
+<div class="row d-sm-none w-100 mt-2">
+  <div class="col-12">
+    <button
+      style="font-size: 14px"
+      class="btn w-100"
+      [class]="
+        highlight ? 'text-white border border-white' : 'border border-dark'
+      "
+      (click)="changestate('All')"
+    >
+      All
+    </button>
+  </div>
+  <div class="col-12">
+    <button
+      style="font-size: 14px"
+      class="btn w-100"
+      [class]="highlight ? 'text-white border border-white' : 'border-dark'"
+      (click)="changestate('Active')"
+    >
+      Active
+    </button>
+  </div>
+  <div class="col-12">
+    <button
+      style="font-size: 14px"
+      class="btn w-100"
+      [class]="highlight ? 'text-white border border-white' : 'border-dark'"
+      (click)="changestate('Completed')"
+    >
+      Completed
+    </button>
+  </div>
+</div>

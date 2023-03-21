@@ -1,0 +1,33 @@
+<div class="div w-100 p-2 d-flex justify-content-between">
+  <li
+    [class]="highlight ? 'darkmode' : ''"
+    class="list-group-item mb-2"
+    (click)="detectchange($event)"
+    style="cursor: pointer; width: 90%"
+  >
+    <input
+      style="transform: scale(1.4); border-radius: 50%; cursor: pointer"
+      class="form-check-input me-1"
+      type="checkbox"
+      value=""
+      [id]="id"
+      [checked]="todo?.iscomplete"
+    />
+
+    <label
+      style="font-size: 18px; cursor: pointer"
+      class="form-check-label mx-3 text-lg"
+      [for]="id"
+      [style]="
+        todo?.iscomplete
+          ? 'text-decoration:line-through;color:gray'
+          : 'text-decoration:none'
+      "
+    >
+      {{ todo?.task }}
+    </label>
+  </li>
+  <button class="btn btn-sm" (click)="deletetodo()">
+    <i style="font-size: 20px" class="bi bi-x"></i>
+  </button>
+</div>

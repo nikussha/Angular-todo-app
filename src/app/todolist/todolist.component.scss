@@ -1,0 +1,29 @@
+.card1 {
+    height: 439px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+
+.my-footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+ 
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+:host{
+    border: none!important;
+}
+.darkmode {
+    background-color: #25273D;
+    color: white;
+    border: #25273D;
+    button{
+        color: white;
+    }
+    
+}

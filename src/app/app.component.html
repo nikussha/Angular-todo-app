@@ -1,0 +1,47 @@
+<div
+  class="container-fluid"
+  style="z-index: -1"
+  [class]="highlight ? 'darkmode' : ''"
+>
+  <div
+    class="bg-image"
+    [style.background]="
+      highlight
+        ? 'url(assets/bg-desktop-dark.jpg)'
+        : 'url(assets/bg-desktop-light.jpg)'
+    "
+  ></div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-6 d-flex justify-content-between" style="z-index: 1">
+      <h1 [class]="highlight ? 'text-white' : 'text-dark'">TODO</h1>
+      <button class="btn" (click)="highlightel()">
+        <i
+          [style]="highlight ? 'color:white' : 'color:black'"
+          style="transform: scale(1.5)"
+          [class]="highlight ? 'bi bi-sun' : 'bi bi-moon'"
+        ></i>
+      </button>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-10 col-md-6 d-flex justify-content-between">
+      <form style="z-index: 1" class="w-100" (submit)="addnewtodo($event)">
+        <input
+          class="form-control p-4"
+          style="z-index: 1; font-size: 18px"
+          type="text"
+          placeholder="Add New Todo"
+          aria-label="default input example"
+          [formControl]="newtodo"
+          [class]="highlight ? 'darkmode' : ''"
+        />
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-10 col-md-6">
+      <app-todolist></app-todolist>
+    </div>
+  </div>
+</div>
